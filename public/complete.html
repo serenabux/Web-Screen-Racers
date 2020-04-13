@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Learn to use a Screen Reader</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  </head>
+  <body class="blueBackground" onload="setUpPage()">
+    <div id="complete_top">
+    <a href="index.html" style="margin-left: 10%; margin-top: 10%;">←Home</a>
+    <div>
+      <h1 id="success">Good Job!</h1>
+      <div id="scoreWrapper" style="margin-bottom: 0px"><span id="score"></span></div>
+      <h4 id="level" style="margin-bottom: 0px;">Level: 1</h4>
+      <p class="best" style="text-align: center; margin-top: 8px">Your best: <span id="best_score" style="color:#F9A03F; font-style: normal; margin-top: 0px;"></span></p>
+    </div>
+  </div>
+    <div class="container2" id="score_description">
+        <div class="score_category">
+          <h2 id="complete_star" class="challenge_star">&#9734</h2>
+          <div>
+            <h2 id="challenge_completed">Challenge Completed</h2>
+            <p class="best">Your best: <span id="best_time"></span></p>
+          </div>
+          <h2>Time: <span id="time"></span></h2>  
+        </div>
+        <div class="score_category">
+          <h2 id="keystroke_star" class="challenge_star">&#9734</h2>
+          <div>
+            <h2>Keystrokes Used:<span id="keystrokes"></span></h2>
+            <p class="best">Your best: <span id="best_keystrokes"></span></p>
+          </div>
+          <h2>Optimal: <span id="ideal_keystrokes"></span></h2>
+        </div>
+        <div class="score_category">
+          <h2 id="keyboard_commands_star" class="challenge_star">&#9734</h2>
+          <div>
+            <h2 id="displayKeyboard">Display Keyboard Commands</h2>
+            <p class="best">Your best: <span id="best_keyboard_commands"></span></p>
+          </div>
+          <h2>Optimal: Keyboard Commands Hidden</h2>
+        </div>
+        <div class="score_category">
+          <h2 id="visual_star" class="challenge_star">&#9734 &#9734</h2>
+          <div>
+            <h2 id="visual_feedback">Limited Visual Feedback</h2>
+            <p class="best">Your best: <span id="best_visual"></span></p>
+          </div>
+          <h2>Optimal: No Visual Feedback</h2>
+        </div>
+        <div class="button_section" id="completeButtons">
+          <button id="redoButton">Redo Challenge</button>
+          <button id="nextChallengeButton">Next Challenge</button>
+        </div>
+    </div>
+
+  </body>
+  <script src="complete.js"></script>
+</html>

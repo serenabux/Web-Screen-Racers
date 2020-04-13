@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Learn to use a Screen Reader</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  </head>
+  <body onload="getData('form');">
+      <div id="sidenav">
+        <div id="top">
+          <a href="index.html" style="display: inline; font-size: 0.75rem; vertical-align: middle;">←Home</a>
+          <h2 style="display: inline; text-align: center; vertical-align: middle; margin-left: 15px;"><span style="color: #880D1E">Forms:</span> Challenge <span id="challengeNum">1</span></h2>    
+        </div>
+        <div id="instructions_section" class="container" style="text-align: center; margin-top: 20px;">
+          <h3>Fill out the form in the challenge section with the following info. When done press submit at the end of the form.</h3>
+            <p id="main_instruction" for="answerInput">Your name is Matt Nelson.</p><br>
+        </div>
+        <div class="container">
+          <form>
+            <h3>Visual Feedback</h3>
+            <div style="text-align: center; padding-bottom: 20px;">
+               <input type="radio" class="radio visualRadio" name="display" value="black" id="black" class="visualRadio" onclick="" checked/>
+              <label for="y" class="visualRadio">No visual feedback</label><br>
+              <input type="radio" class="radio visualRadio" name="display" value="some" id="some" onclick="" />
+              <label for="some" class="visualRadio">Show what is read</label><br>
+              <input type="radio" class="radio visualRadio" name="display" value="white" id="white" onclick="" />
+              <label for="white" class="visualRadio">Remove Curtain</label>
+          </div>
+          </form>
+        </div>
+        <div class="container">
+          <h3>Table Keyboard Commands</h3>
+          <div class="button_section">
+            <button id="showCommands">Show Useful Key Commands</button>
+          </div>
+          <div id="keyCommands">
+            <p><b>f</b>: next form</p>
+            <p><b>Enter or Caps Lock + Space</b>: Enter Form Mode</p>
+            <p><b>Caps Lock + Space</b>: Exit Form Mode</p>
+            <p><b>Tab/ shift + Tab</b>: Next/Previous Form Control</p>
+            <p><b>spacebar</b>: Select/Deselect Checkboxes</p>
+            <p><b>↑/↓</b>: Select from group of radio buttons</p>
+            <p>
+          </div>
+        </div>
+        <div id="keystroke_section" class="container">
+          <h3 style="margin-bottom: 0px;">Keystrokes: <span id="keystorkes">0</span></h3>
+        </div>
+        <div class="button_section" style="margin-bottom: 36px; margin-top: 12px;">
+          <p style="font-size: 12px; margin-bottom: 12px;">Press start then press ↓ key to get to the challenge</p> 
+          <button id="start" onclick="">Start</button>
+        </div>
+      </div>
+      <div id="main">
+      </div>
+
+  </body>
+  <script src="challengeData.js"></script>
+  <script src="screen_reader.js"></script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Learn to use a Screen Reader</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  </head>
+  <body class="blueBackground" onload="getPastChallengeData()">
+    <h1>Screen Racers</h1>
+    <h4 id="level">Level: 0</h4>
+    <div class="container2 row">
+      <div class="column">
+        <h4 class="margin-bottom-24">Basic Navigation</h4>
+        <a onCLick= "setChallenge(0, 'basicNav')" href='basicNav.html' class='challenge margin-bottom-24' id='basic0'>Challenge 1</a>
+        <p class="hidden index-stars" id="basic0-star"></p>
+        <a onCLick= "setChallenge(1, 'basicNav')" class="disabled margin-bottom-24" href='basicNav.html' class='challenge' id='basic1'>Challenge 2</a>
+        <p class="hidden index-stars" id="basic1-star"></p>
+        <a onCLick= "setChallenge(2, 'basicNav')" class="disabled margin-bottom-24" href='basicNav.html' class='challenge' id='basic2'>Challenge 3</a>
+        <p class="hidden index-stars" id="basic2-star"></p>
+      </div>
+      <div class="column">
+        <h4 class="margin-bottom-24">Tables</h4>
+        <a  onCLick= "setChallenge(0, 'tables')" href='tables.html' class='challenge margin-bottom-24' id='tables0'>Challenge 1</a>
+        <p class="hidden index-stars" id="tables0-star"></p>
+        <a class="disabled margin-bottom-24" onCLick= "setChallenge(1, 'tables')"href='tables.html' id='tables1'>Challenge 2</a>
+        <p class="hidden index-stars" id="tables1-star"></p>
+        <a class="disabled margin-bottom-24" onCLick= "setChallenge(2, 'tables')"href='tables.html'id='tables2'>Challenge 3</a>
+        <p class="hidden index-stars" id="tables2-star"></p>
+      </div> 
+      <div class="column">
+        <h4 class="margin-bottom-24">Forms</h4>
+         <a onCLick= "setChallenge(0, 'forms')" href='forms.html' class='challenge margin-bottom-24' id='forms0'>Challenge 1</a>
+         <p class="hidden index-stars" id="forms0-star"></p>
+        <a class="disabled margin-bottom-24" onCLick= "setChallenge(1, 'forms')"href='forms.html' id='forms1'>Challenge 2</a>
+        <p class="hidden index-stars" id="forms1-star"></p>
+        <a class="disabled margin-bottom-24" onCLick= "setChallenge(2, 'forms')"href='forms.html' id='forms2'>Challenge 3</a>
+        <p class="hidden index-stars" id="forms2-star"></p>
+      </div>
+    </div>
+  </body>
+  <script src="challengeData.js"></script>
+</html>

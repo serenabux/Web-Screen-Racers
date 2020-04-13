@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8'>
+    <title>Learn to use a Screen Reader</title>
+    <link rel='stylesheet' type='text/css' href='main.css'>
+  </head>
+  <body>
+    <div id="main">
+
+    <form><h2>Emotion Tracker</h2><label for='name'>Name:</label><input type='text' id='name' name='name' class='formField'><br><label for='name'>Date (mm/dd/yy): </label><input type='text' id='date' name='date' placeholder='mm/dd/yy' class='formField'><br><h5>What emotions are you experiencing</h5><label for='emotion1'>Joy</label><input type='checkbox' id='emotion1' name='emotion' value='Joy' class='formField'><input type='checkbox' id='emotion2' name='emotion' value='Sadness' class='formField'><label for='emotion3'>Sadness</label><br><input type='checkbox' id='emotion3' name='emotion' value='Anger' class='formField'><label for='emotion3'>Anger</label><br><input type='checkbox' id='emotion4' name='emotion' value='Fear' class='formField'><label for='emotion5'>Fear</label><br><input type='checkbox' id='emotion5' name='emotion' value='Disgust' class='formField'><label for='emotion5'>Disgust</label><br></form>
+    </div>
+
+
+<!--         <form><h2>Find something to watch!</h2><h5>What streaming services do you have?</h5><input type='checkbox' id='service1' name='service' value='Netflix' class='formField'><label for='service1'>Netflix</label><br><input type='checkbox' id='service2' name='service' value='Hulu' class='formField'><label for='service2'>Hulu</label><br><input type='checkbox' id='service3' name='vehicle3' value='HBO' class='formField'><label for= 'service3'>HBO</label><br><h5>Movie or TV show?</h5><input type='radio' id='tv' name='showType' value='tv'><label for='tv'>TV Show</label><br><input type='radio' id='movie' name='showType' value='movie' class='formField'><label for='female'>Movie</label><br><input type='radio' id='both' name='showType' value='both' class='formField'><label for='both'>Both</label><br><h5>Genre</h5><select id='genere'><option value='all'>All Genres</option><option value='comedy'>Comedy</option><option value='drama'>Drama</option><option value='scifi'>Sci-Fi</option><option value='documentary'>Documentary</option><option value='horror'>Horror</option></select><br><input type='submit' value='Submit'></form>
+
+
+
+      <form>
+        <h2>Find something to watch!</h2>
+        <h5>What streaming services do you have?</h5>
+        <input type='checkbox' id='service1' name='service' value='Netflix' class='formField'>
+        <label for='service1'>Netflix</label><br>
+        <input type='checkbox' id='service2' name='service' value='Hulu' class='formField'>
+        <label for='service2'>Hulu</label><br>
+        <input type='checkbox' id='service3' name='vehicle3' value='HBO' class='formField'>
+        <label for='service3'>HBO</label><br>
+        <h5>Movie or TV show?</h5>
+        <input type='radio' id='tv' name='showType' value='tv'>
+        <label for='tv'>TV Show</label><br>
+        <input type='radio' id='movie' name='showType' value='movie' class='formField'>
+        <label for='female'>Movie</label><br>
+        <input type='radio' id='both' name='showType' value='both' class='formField'>
+        <label for='both'>Both</label><br>
+        <h5>Genre</h5>
+        <select id='genere'>
+          <option value='all'>All Genres</option>
+          <option value='comedy'>Comedy</option>
+          <option value='drama'>Drama</option>
+          <option value='scifi'>Sci-Fi</option>
+          <option value='horror'>Documentary</option>
+          <option value='audi'>Horror</option>
+        </select><br>
+        <input type='submit' value='Submit'>
+      </form> -->
+<!--       <h3 id='heading'>NVDA Practice</h3>
+      <p>blah blah</p>
+      <h3>test</h3>
+      <a href='https://google.come'>google.com</a>
+      <h5>Yes</h5>
+      <h6>Oh boy</h6>
+      <form>
+        <label for='fname'>First name:</label><br>
+        <input type='text' id='fname' name='fname' class='formField'><br>
+        <label for='lname'>Last name:</label><br>
+        <input type='text' id='lname' name='lname' class='formField'><br>
+        <input type='radio' id='male' name='gender' value='male'>
+        <label for='male'>Male</label><br>
+        <input type='radio' id='female' name='gender' value='female' class='formField'>
+        <label for='female'>Female</label><br>
+        <input type='radio' id='other' name='gender' value='other' class='formField'>
+        <label for='other'>Other</label><br>
+        <input type='checkbox' id='vehicle1' name='vehicle1' value='Bike' class='formField'>
+        <label for='vehicle1'>I have a bike</label><br>
+        <input type='checkbox' id='vehicle2' name='vehicle2' value='Car' class='formField'>
+        <label for='vehicle2'>I have a car</label><br>
+        <input type='checkbox' id='vehicle3' name='vehicle3' value='Boat' class='formField'>
+        <label for='vehicle3'>I have a boat</label><br>
+      </form>
+      <table style='width:100%'>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Age</th>
+        </tr>
+        <tr>
+          <td>Jill</td>
+          <td>Smith</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>Eve</td>
+          <td>Jackson</td>
+          <td>94</td>
+        </tr>
+      </table>
+      <table>
+      <caption>Delivery slots:</caption>
+      <tr>
+        <td></td>
+        <th scope='col'>Monday</th>
+        <th scope='col'>Tuesday</th>
+        <th scope='col'>Wednesday</th>
+        <th scope='col'>Thursday</th>
+        <th scope='col'>Friday</th>
+      </tr>
+      <tr>
+        <th scope='row'>09:00 - 11:00</th>
+        <td>Closed</td>
+        <td>Open</td>
+        <td>Open</td>
+        <td>Closed</td>
+        <td>Closed</td>
+      </tr>
+      <tr>
+        <th scope='row'>11:00 - 13:00</th>
+        <td>Open</td>
+        <td>Open</td>
+        <td>Closed</td>
+        <td>Closed</td>
+        <td>Closed</td>
+      </tr>
+    </table>
+  </div> -->
+
+  </body>
+  <script src='test.js'></script>
+</html>

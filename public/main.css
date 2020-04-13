@@ -1,0 +1,303 @@
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+html,body {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+  padding: 0;
+}
+
+h1{
+  text-align: center;
+}
+
+h4{
+  text-align: center;
+}
+
+h2{
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+h3{
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+p{
+  font-size: 0.8rem;
+  margin-bottom: 0.3rem;
+}
+
+label{
+  font-size: 0.8rem;
+}
+
+button{
+  background-color: #880D1E;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: left;
+}
+
+.blueBackground{
+  background-color: #E8F2FB;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  flex: 1 1 30%; /*grow | shrink | basis */
+  padding: 0 24px;
+  width: 32%;
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .row {
+    display: block;
+  }
+  .column{
+    width: 100%;
+    padding: 2% 0px;
+  }
+}
+
+.disabled {
+  color: #818181;
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.challenge{
+  display: block;
+  color: #880D1E;
+}
+
+.margin-bottom-24{
+  margin-bottom: 24px;
+  display: block;
+}
+
+.hidden{
+  display: hidden;
+}
+
+.index-stars{
+  color: #F9A03F;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  font-size: 1.2em;
+}
+
+.visualRadio{
+  float: left;
+  text-align: left;
+}
+
+#keyCommands{
+  display: none;
+}
+
+#start{
+  width: 80%;
+  font-size: 1.2rem;
+}
+
+.button_section{
+  text-align: center;
+}
+
+#main{
+	margin-left: 34%;
+  padding:0 5%;
+  background-color: black;
+  position: absolute;
+  min-height: 100%;
+  top: 0;
+}
+
+#sidenav {
+  padding-left: 2%;
+  padding-right: 2%;
+  height: 100%;
+  width: 30%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #E8F2FB;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+.container{
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 12px;
+}
+
+.container2{
+  background-color: white;
+  padding: 2%;
+  margin: 2% 5%;
+}
+
+#keystroke_section{
+  margin-top: 10px;
+}
+
+#top{
+  display: grid;
+  grid-template-columns: 5% 90% 5%;
+  grid-gap: 5px; 
+  vertical-align: middle;
+
+}
+
+
+
+a{
+  color: #000000;
+}
+
+a:focus {
+  color: blue;
+}
+
+/*============================================*/
+/*Forms CSS*/
+
+#challengeSubmit{
+  background-color: #000;
+  border: 1px solid black;
+}
+
+.formField{
+    background-color: #000000;
+    border: 1px solid black;
+}
+
+.selectType{
+  width: 0.1px;
+  height: 0.1px;
+}
+
+/*============================================*/
+/*Complete Page CSS*/
+#completeButtons button{
+  padding: 10px;
+  margin: 5% 5% 1% 5%;
+  font-size: 1rem;
+}
+
+#score{
+  font-size: 2rem;
+  text-align: center;
+  color: #F9A03F;
+}
+
+#scoreWrapper{
+  margin: 0px;
+  text-align: center;
+}
+
+#success{
+  margin-bottom: 0px;
+}
+
+#level{
+  margin-top: 0px;
+}
+
+.score_category{
+  display: grid;
+  grid-template-columns: 20% 40% 40%;
+  grid-gap: 10px;
+}
+
+.challenge_star{
+  color: #F9A03F;
+  font-size: 2.5em;
+  margin-top: 0px;
+}
+
+.best{
+  font-style: italic;
+}
+
+#complete_top{
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-gap: 10px;
+}
+
+
+a.skip-main {
+  left:-999px;
+  position:absolute;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  z-index:-999;
+}
+a.skip-main:focus, a.skip-main:active {
+  color: #000000;
+  /* background-color:#ffffff; */
+  left: auto;
+  top: auto;
+  width: 30%;
+  height: auto;
+  overflow:auto;
+  margin: 10px 35%;
+  padding:5px;
+  border-radius: 15px;
+  text-align:center;
+  font-size:1.2em;
+  z-index:999;
+}
+
+#challenge_navigation{
+  display: flex;
+  list-style-type: none;
+}
+
+.challenge_nav_item{
+  /* display: flex; */
+  text-decoration: none;
+
+}
+
+.challenge_nav_item > a {
+  text-align: center;
+  padding: 14px 16px;
+}
+
+.challenge_nav_item > a:focus {
+  color: black;
+}
