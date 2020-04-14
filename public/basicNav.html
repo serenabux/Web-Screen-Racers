@@ -15,7 +15,7 @@
         <div id="instructions_section" class="container" style="text-align: center; margin-top: 20px;">
           <h3>Challenge!</h3>
           <form name="answer" onsubmit="return validateAnswer()" method="post">
-            <label id="main_instruction" for="answerInput">Where did Jen go to school?</label><br>
+            <label id="main_instruction" for="answerInput"></label><br>
             <input id="answerInput" type="text" name="answerInput" style="margin-top: 12px;">
             <button name="data" type="button" onclick="checkAnswer()">Submit</button>
           </form>
@@ -52,7 +52,7 @@
         </div>
         <div class="button_section" style="margin-bottom: 36px; margin-top: 12px;">
           <p style="font-size: 12px; margin-bottom: 12px;">Press start then press ↓ key to get to the challenge</p> 
-          <button id="start" onclick="start()">Start</button>
+          <button id="start" onclick="start(), timer()">Start</button>
         </div>
       </div>
       <div id="main">

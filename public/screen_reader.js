@@ -9,6 +9,7 @@ var shownElements = [];
 var synth = window.speechSynthesis;
 var paragraphIndex = 0;
 var score = 5;
+window.localStorage.setItem('score', JSON.stringify(score));
 var lowestDisplay = 0;
 window.localStorage.setItem('lowestDisplay', JSON.stringify(0));
 var displayKeyCommands = 0;
@@ -104,7 +105,7 @@ function callProperType(direction){
     }
     if(showRead){
         elements[elementsIndex].style.backgroundColor = "#ffffff";
-        shownElements.push(currentElement)
+        shownElements.push(elements[elementsIndex])
     }
 }
 
@@ -168,6 +169,10 @@ function heading(direction){
    currentElement = elements[elementsIndex]
    currentElement.focus()
    speak("Heading level " + elements[elementsIndex].localName[1] + ", "+ elements[elementsIndex].innerHTML);
+   if(showRead){
+    elements[elementsIndex].style.backgroundColor = "#ffffff";
+    shownElements.push(elements[elementsIndex])
+   }
 }
 
 function nav(){
@@ -179,6 +184,26 @@ function nav(){
     var numChildren = elements[elementsIndex].children.length;
     speak(" with " + numChildren + " items, ")
     callProperType()
+}
+
+function followLink(){
+    if(elements[elementsIndex].classList.contains('localLink')){
+        var currentIndex = elementsIndex;
+        var idName = elements[currentIndex].hash.substring(1);
+        while(elements[elementsIndex].id != idName){
+            elementsIndex += 1;
+            if(elementsIndex == numberOfElements){
+                elementsIndex = 0;
+            }
+            if(elementsIndex == currentIndex){
+                return;
+            }
+        }
+        if(elements[elementsIndex].localName == 'div'){
+            elementsIndex += 1;
+        }
+        callProperType();
+    }
 }
 
 function nextElement(){
@@ -331,6 +356,9 @@ onkeydown = onkeyup = function(e){
         }
         else if(map['13']){
             //enter key
+            if(elementsIndex > -1 && elementsIndex < numberOfElements && elements[elementsIndex].localName == 'a'){
+                followLink();
+            }
         }
         else if(map['16']){
             //shift

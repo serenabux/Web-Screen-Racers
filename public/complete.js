@@ -6,13 +6,18 @@ function getData(){
 	pageInfo.type = JSON.parse(window.localStorage.getItem('type'));
 	pageInfo.score= JSON.parse(window.localStorage.getItem('score'));
 	pageInfo.keystrokes = JSON.parse(window.localStorage.getItem('keyStrokes'));
-	pageInfo.scoreChanger = JSON.parse(window.localStorage.getItem('scoreChanger'));
 	pageInfo.time = JSON.parse(window.localStorage.getItem('time'));
 	pageInfo.answer = JSON.parse(window.localStorage.getItem('answer'));
 	pageInfo.lowestDisplay = JSON.parse(window.localStorage.getItem('lowestDisplay'));
 	pageInfo.displayKeyCommands = JSON.parse(window.localStorage.getItem('displayKeyCommands'));
 	pageInfo.idealKeystrokes = JSON.parse(window.localStorage.getItem('idealKeystrokes'));
 	pageInfo.level = JSON.parse(window.localStorage.getItem('level'));
+}
+
+function calculateScore(){
+	if(pageInfo.keystrokes > pageInfo.idealKeystrokes + Math.round(pageInfo.idealKeystrokes *.1)){
+		pageInfo.score - 1;
+	}
 }
 
 function enableNextLevel(){
@@ -63,9 +68,6 @@ function getPastChallengeData(){
 		if(challengeSpecificInfo.score < pageInfo.score){
 			challengeSpecificInfo.score = pageInfo.score;
 		}
-		if(challengeSpecificInfo.time > pageInfo.time){
-			challengeSpecificInfo.time = pageInfo.time;
-		}
 		if(challengeSpecificInfo.keystrokes > pageInfo.keystrokes){
 			challengeSpecificInfo.keystrokes = pageInfo.keystrokes;
 		}
@@ -74,6 +76,15 @@ function getPastChallengeData(){
 		}
 		if(challengeSpecificInfo.lowestDisplay > pageInfo.lowestDisplay){
 			challengeSpecificInfo.lowestDisplay = pageInfo.lowestDisplay;
+		}
+		console.log(challengeSpecificInfo.time)
+		var t1 = challengeSpecificInfo.time.split(":");
+		var t2 = pageInfo.time.split(":");
+		if(parseInt(t1[0]) > parseInt(t2[0])){
+			challengeSpecificInfo.time = pageInfo.time;
+		}
+		else if(parseInt(t1[0]) == parseInt(t2[0]) && parseInt(t1[1]) > parseInt(t2[1])){
+			challengeSpecificInfo.time = pageInfo.time;
 		}
 		var display = "";
 		switch(challengeSpecificInfo.lowestDisplay){
@@ -146,6 +157,7 @@ function setKeyCommands(){
 
 function setUpPage(){
 	getData();
+	calculateScore();
 	getPastChallengeData();
 	enableNextLevel();
 	console.log(pageInfo);
@@ -192,7 +204,8 @@ function newChallenge(){
 	if(nextChallengeNum == 0){
 		switch(pageInfo.type){
 			case "basicNav":
-				pageInfo.type = "tables";
+				//TODO: change back to tables
+				pageInfo.type = "index";
 				break;
 			case "tables":
 				pageInfo.type = "forms";

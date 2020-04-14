@@ -138,6 +138,7 @@ td, th {
   background-color: black;
   position: absolute;
   min-height: 100%;
+  min-width: 56%;
   top: 0;
 }
 

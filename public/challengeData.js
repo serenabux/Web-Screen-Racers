@@ -1,6 +1,8 @@
 var answer = '';
 var formAnswer = '';
 var idealKeystrokes = 10000000;
+var time;
+
 
 
 function setStars(score, id){
@@ -58,8 +60,8 @@ function getPastChallengeData(){
 	}
 	else{
 		var newChallenge =  new Object();
-		var challengeData1 = {score: 0, time: 100000000, keystrokes: 1000000000, lowestDisplay: 3, displayKeyCommands: 1, avaliable: 1}
-		var challengeData2 = {score: 0, time: 100000000, keystrokes: 1000000000, lowestDisplay: 3, displayKeyCommands: 1, avaliable: 0}
+		var challengeData1 = {score: 0, time: "100000000:100000000" , keystrokes: 1000000000, lowestDisplay: 3, displayKeyCommands: 1, avaliable: 1}
+		var challengeData2 = {score: 0, time: "100000000:100000000", keystrokes: 1000000000, lowestDisplay: 3, displayKeyCommands: 1, avaliable: 0}
 		newChallenge.tables = [challengeData1, challengeData2, challengeData2];
 		newChallenge.basic = [challengeData1, challengeData2, challengeData2];
 		newChallenge.forms = [challengeData1, challengeData2, challengeData2];
@@ -86,9 +88,10 @@ function basicData(challengeNumber){
 			`
 			question = "Where did Elizebeth recieve her BFA?";
 			answer = "Duke";
+			idealKeystrokes = 10;
 			break;
 		case 1:
-			code = `<a class="skip-main" href="#main_challenge">Skip to main content</a>
+			code = `<a class="skip-main localLink" href="#main_challenge">Skip to main content</a>
 					<nav>
 						<ul id="challenge_navigation">
 							<li class="challenge_nav_item"><a href="#">Nav Item 1</a></li>
@@ -104,14 +107,15 @@ function basicData(challengeNumber){
 				`;
 			question = "What is the main headline of this page?";
 			answer = "Dogs";
+			idealKeystrokes = 7;
 			break;
 		case 2:
 			code = `<h1>Jen Martinez</h1>
 					<h5>Contents</h5>
 					<ul>
-						<li><a href="">Childhood</a></li>
-						<li><a href="">Career</a></li>
-						<li><a href="">Personal Life</a></li>
+						<li><a href="#childhood" class="localLink">Childhood</a></li>
+						<li><a href="#career" class="localLink">Career</a></li>
+						<li><a href="#personal" class="localLink">Personal Life</a></li>
 					</ul>
 					<h2 id='childhood'>Childhood</h2>
 					<p>Jen Martinez was born on June 18, 1981. Her parents are Jane and Bill Martinez. She
@@ -127,6 +131,7 @@ function basicData(challengeNumber){
 					She specifically enjoys hiking with her two sons and husband. She also volunteers with the Make a Wish Organinzation. `
 			question = "What organization does Jen volunteer for in her free time?"
 			answer = "Make a Wish";
+			idealKeystrokes = 10;
 			break;
 	}
 	document.getElementById("challengeNum").innerHTML = challengeNumber + 1;
@@ -367,7 +372,11 @@ function getData(type){
 function setChallenge(challengeNumber, challengeType){
   window.localStorage.setItem('challenge', JSON.stringify(challengeNumber));
   window.localStorage.setItem('type', JSON.stringify(challengeType));
-  window.localStorage.setItem('idealKeystrokes', JSON.stringify(idealKeystrokes));
+}
+
+
+function timer() {
+    time = new Date();
 }
 
 
@@ -378,8 +387,20 @@ function checkAnswer(){
 	else{
 		window.localStorage.setItem('answer', JSON.stringify(2));
 	}
+	time = new Date() - time;
+	var seconds = Math.round(time / 1000);
+	var minutes = Math.round(seconds / 60)
+	var sec = TrimSeconds(seconds);
 	window.localStorage.setItem('keyStrokes', JSON.stringify(document.getElementById("keystorkes").innerHTML));
+	window.localStorage.setItem('time', JSON.stringify(minutes + ':'+ sec))
+	window.localStorage.setItem('idealKeystrokes', JSON.stringify(idealKeystrokes));
 	window.location='complete.html';
+}
+
+function TrimSeconds(elapsed) {
+    if (elapsed >= 60)
+        return TrimSecondsMinutes(elapsed - 60);
+    return elapsed;
 }
 
 function formCheckAnswer(){
