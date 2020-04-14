@@ -1,19 +1,21 @@
 {
-  "name": "simple-node-website",
+  "name": "web_screen_racers",
   "version": "0.1.0",
-  "description": "A simple website built with Node, Express and Pug",
+  "description": "A game to help teach screen reader commands",
   "main": "server.js",
   "scripts": {
     "start": "npx nodemon server.js"
   },
-  "author": "Ayo Isaiah",
+  "author": "Serena Buxton",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
-    "pug": "^2.0.3",
     "talkify-tts": "^2.7.5"
   },
   "devDependencies": {
     "nodemon": "^1.19.0"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
