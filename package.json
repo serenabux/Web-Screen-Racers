@@ -4,7 +4,7 @@
   "description": "A game to help teach screen reader commands",
   "main": "server.js",
   "scripts": {
-    "start": "npx nodemon server.js"
+    "start": "node server.js"
   },
   "author": "Serena Buxton",
   "license": "MIT",

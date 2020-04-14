@@ -55,12 +55,12 @@ function callProperType(direction){
         }
         case "li":{
             if(elements[elementsIndex].children.length > 0){
-                var currentIndex = elementsIndex;
+                if(direction == -1){
+                    elementsIndex -= 1;
+                    callProperType()
+                }
                 elementsIndex += 1;
                 callProperType();
-                if(direction == -1){
-                    elementsIndex = currentIndex;
-                }
                 return;
             }
             else{
