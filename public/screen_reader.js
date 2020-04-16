@@ -15,6 +15,7 @@ window.localStorage.setItem('lowestDisplay', JSON.stringify(0));
 var displayKeyCommands = 0;
 window.localStorage.setItem('displayKeyCommands', JSON.stringify(0));
 let keysPressed = {};
+var completeVisual = 0;
 
 
 function start() {
@@ -107,6 +108,10 @@ function callProperType(direction){
         elements[elementsIndex].style.backgroundColor = "#ffffff";
         shownElements.push(elements[elementsIndex])
     }
+    if(completeVisual){
+        elements[elementsIndex].style.border = "thick solid #FF0000";
+        shownElements.push(elements[elementsIndex])
+    }
 }
 
 
@@ -114,6 +119,10 @@ function paragraphNext(){
     if(showRead){
         currentElement.style.backgroundColor = '#ffffff';
         shownElements.push(currentElement)
+    }
+    if(completeVisual){
+        elements[elementsIndex].style.border = "thick solid #FF0000";
+        shownElements.push(elements[elementsIndex])
     }
     if(currentElement.innerHTML.length - paragraphIndex > 99){
         var str = currentElement.innerHTML.substr(paragraphIndex, (99 + paragraphIndex));
@@ -131,6 +140,10 @@ function paragraphLast(){
     if(showRead){
         currentElement.style.backgroundColor = '#ffffff';
         shownElements.push(currentElement)
+    }
+    if(completeVisual){
+        elements[elementsIndex].style.border = "thick solid #FF0000";
+        shownElements.push(elements[elementsIndex])
     }
     if(paragraphIndex - 99 > 0){
         var str = currentElement.innerHTML.substr(paragraphIndex - 99, paragraphIndex)
@@ -173,6 +186,10 @@ function heading(direction){
     elements[elementsIndex].style.backgroundColor = "#ffffff";
     shownElements.push(elements[elementsIndex])
    }
+   if(completeVisual){
+    elements[elementsIndex].style.border = "thick solid #FF0000";
+    shownElements.push(elements[elementsIndex])
+}
 }
 
 function nav(){
@@ -273,6 +290,9 @@ function previousElement(){
 
 function tabKey(direction){
     var currentIndex = elementsIndex;
+    if(currentIndex == -1){
+        currentIndex = 0;
+    }
     if((elementsIndex + direction) < numberOfElements && (elementsIndex + direction) > -1){
          elementsIndex += direction;
      }
@@ -285,13 +305,22 @@ function tabKey(direction){
      elements[elementsIndex].localName != "input" && elements[elementsIndex].localName != "textarea" && elements[elementsIndex].localName != "selector")
      {
         elementsIndex += direction;
-         if(elementsIndex == numberOfElements || elementsIndex < 0){
-             speak("No more tabable content");
-             elementsIndex = currentIndex;
-             return;
-         }
+        if(elementsIndex == numberOfElements){
+             elementsIndex = 0;
+        }
+        else if(elementsIndex < 0){
+            elementsIndex = numberOfElements - 1;
+        }
+        if(elementsIndex == currentIndex){
+            speak("No tabbable content");
+            if(elementsIndex == 0){
+                elementsIndex = -1;
+            }
+            return;
+        }
     }
     currentElement = elements[elementsIndex]
+    currentElement.focus
     callProperType();
 }
 
@@ -335,6 +364,9 @@ onkeydown = onkeyup = function(e){
             console.log(elements[elementsIndex])
             elements[elementsIndex].style.backgroundColor = "#000000";
         }
+        if(completeVisual && elementsIndex > 0 && elementsIndex < numberOfElements){
+            elements[elementsIndex].style.border = 'none';
+        }
         document.getElementById("keystorkes").innerHTML = keystrokes;
         if(map['9']  && map['16']){
             //shift + tab
@@ -358,6 +390,9 @@ onkeydown = onkeyup = function(e){
             //enter key
             if(elementsIndex > -1 && elementsIndex < numberOfElements && elements[elementsIndex].localName == 'a'){
                 followLink();
+            }
+            if(document.activeElement == document.getElementById("answerInput") || document.activeElement == document.getElementById("submit")){
+                document.getElementById("submit").click();
             }
         }
         else if(map['16']){
@@ -416,6 +451,15 @@ onkeydown = onkeyup = function(e){
             //t key
         }
     }
+    else if(map['13']){
+        //enter key
+        if(elementsIndex > -1 && elementsIndex < numberOfElements && elements[elementsIndex].localName == 'a'){
+            followLink();
+        }
+        if(document.activeElement == document.getElementById("answerInput") || document.activeElement == document.getElementById("submit")){
+            document.getElementById("submit").click();
+        }
+    }
 }
 
 
@@ -423,6 +467,7 @@ function setShowRead(type){
     switch(type){
         case "showRead":{
             showRead = 1;
+            completeVisual = 0;
             document.getElementById("main").style.backgroundColor = "#000000";
             for(var i=0; i < shownElements.length; i++){
                 shownElements[i].style.backgroundColor = "#000000"
@@ -441,10 +486,12 @@ function setShowRead(type){
             }
             score = score - (2 - lowestDisplay);
             lowestDisplay = 2;
+            completeVisual = 1;
             break;
         }
         case "black":{
             showRead = 0;
+            completeVisual = 0;
             document.getElementById("main").style.backgroundColor = "#000000";
             for(var i=0; i < shownElements.length; i++){
                 shownElements[i].style.backgroundColor = "#000000"
@@ -457,10 +504,19 @@ function setShowRead(type){
 }
 
 function showCommands(){
-    document.getElementById('keyCommands').style.display = 'inline';
-    document.getElementById('showCommands').style.display = 'none';
-    score -= 1;
-    displayKeyCommands = 1;
-    window.localStorage.setItem('score', JSON.stringify(score));
-    window.localStorage.setItem('displayKeyCommands', JSON.stringify(displayKeyCommands));
+    if(document.getElementById('showCommands').innerHTML == 'Show Useful Key Commands'){
+        document.getElementById('keyCommands').style.display = 'inline';
+        document.getElementById('showCommands').innerHTML = 'Hide Key Commands';
+        if(displayKeyCommands == 0){
+            score -= 1;
+            displayKeyCommands = 1;
+            window.localStorage.setItem('score', JSON.stringify(score));
+            window.localStorage.setItem('displayKeyCommands', JSON.stringify(displayKeyCommands));
+        }
+    }
+    else{
+        document.getElementById('keyCommands').style.display = 'none';
+        document.getElementById('showCommands').innerHTML = 'Show Useful Key Commands';
+
+    }
   }

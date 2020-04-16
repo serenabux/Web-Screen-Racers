@@ -1,7 +1,7 @@
 var answer = '';
 var formAnswer = '';
 var idealKeystrokes = 10000000;
-var time;
+var time = "00:00";
 
 
 
@@ -437,4 +437,32 @@ function formCheckAnswer(){
 	}
 	window.location='complete.html';
 	return false;
+}
+
+function openPopup(content){
+	document.getElementById("outerPopUp").style.display = 'block';
+	if(content == 1){
+		document.getElementById("popupContent").innerHTML = `Your goal is to answer the challenge question using the submit field. You will find the answer in 
+        the blacked out area after pressing start and using the key commands. Remember you can customize your experience using using the menus
+        on the left`;
+	}
+	else if(content == 2){
+		document.getElementById("popupContent").innerHTML = `This section controls the amount of visual feedback you recieve while navigating the challenge content.<br>
+		<b>No visual feedback:</b> You will only recieve audio feedback <br>
+		<b>Limited visual feedback:</b> You will be able to see the content that is being read.<br>
+		<b>Complete visula feedback:</b> Youwill be able to see all content and a border will appear around what is read.`;
+		return false;
+	}
+}
+
+function closePopup(){
+	document.getElementById("outerPopUp").style.display = 'none';
+}
+
+window .onclick = function(event) {
+	console.log(event.target);
+	if(!event.target.matches("#CompletedPopup") && !event.target.matches("#index_help_button") && 
+	!event.target.matches(".fa-question-circle") && document.getElementById("outerPopUp").style.display == 'block'){
+		document.getElementById("outerPopUp").style.display = 'none';
+	}
 }

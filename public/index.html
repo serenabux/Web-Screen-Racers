@@ -7,8 +7,26 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   </head>
   <body class="blueBackground" onload="getPastChallengeData()">
-    <h1>Screen Racers</h1>
+    <div id = "top_index">
+      <div></div>
+      <h1>Screen Racers</h1>
+      <button id="index_help_button" onclick="openPopup()"><i class="fa fa-question-circle"></i></button>
+    </div>
     <h4 id="level">Level: 0</h4>
+    <div id="outerPopUp" role="alert" aria-live="polite">
+      <span class="helper"></span>
+      <div id="CompletedPopup">
+        <button id="popupCloseButton" onclick="closePopup()">x</button>
+        <p style="font-size: 1.5rem;">Screen Racers is a game that is consists of challenges to help you learn the basic commands of using a screen reader.
+        Click on a challenge to begin learning!</p>
+        <br>
+        <p">Screen racers was designed and developed by Serena Buxton for the Super Human Computing Lab under the advisment of Shaun Kane.
+          The purpose of the application is to explore ways to lighten the cognitive load of a sighted person learning to use a screen reader. 
+          The hope is that making the process more engaging will encourage more software developers to learn the basics so that they can develop more accessible websites.
+        </p>
+        </div>
+      </div>
+    </div>
     <div class="container2 row">
       <div class="column">
         <h4 class="margin-bottom-24">Basic Navigation</h4>
@@ -40,4 +58,5 @@
     </div>
   </body>
   <script src="challengeData.js"></script>
+  <script src="https://use.fontawesome.com/442041a9b9.js"></script>
 </html>

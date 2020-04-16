@@ -114,6 +114,29 @@ td, th {
   font-size: 1.2em;
 }
 
+#index_help_button{
+  color: #880D1E;
+  font-size: 3em;
+  border: none;
+  background-color: #E8F2FB;
+  border-radius: 8px;
+}
+
+#index_help_button:hover{
+  opacity: 0.3;
+}
+
+#visual_help_button{
+   background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    color: #880D1E;
+    font-size: 1.5em;
+}
+
 .visualRadio{
   float: left;
   text-align: left;
@@ -172,15 +195,21 @@ td, th {
   margin-top: 10px;
 }
 
-#top{
+.top{
   display: grid;
-  grid-template-columns: 5% 90% 5%;
+  grid-template-columns: 10% 80% 10%;
   grid-gap: 5px; 
   vertical-align: middle;
 
 }
 
+#top_index{
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-gap: 5px; 
+  vertical-align: middle;
 
+}
 
 a{
   color: #000000;
@@ -301,4 +330,59 @@ a.skip-main:focus, a.skip-main:active {
 
 .challenge_nav_item > a:focus {
   color: black;
+}
+
+/*============================================*/
+/*Pop Up*/
+#outerPopUp{
+  background:rgba(0,0,0,.4);
+  cursor:pointer;
+  display:none;
+  height:100%;
+  position:fixed;
+  text-align:center;
+  top:0;
+  width:100%;
+  z-index:10000;
+}
+
+#outerPopUp .helper{
+  display:inline-block;
+  height:100%;
+  vertical-align:middle;
+}
+
+#CompletedPopup {
+  background-color: #fff;
+  box-shadow: 10px 10px 60px #555;
+  display: inline-block;
+  height: auto;
+  max-width: 600px;
+  min-height: 100px;
+  width: 60%;
+  position: relative;
+  border-radius: 8px;
+  padding: 5%;
+  text-align: left;
+  margin-top: 64px;
+}
+#popupCloseButton {
+  background-color: #999;
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: arial;
+  font-weight: bold;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  margin-right: 12px;
+  margin-top: 12px;
+}
+#popupCloseButton:hover {
+  background-color: #ccc;
 }

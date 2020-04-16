@@ -7,29 +7,44 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   </head>
   <body onload="getData('basicNav'); getElements();">
+    <div id="outerPopUp" role="alert" aria-live="polite">
+      <span class="helper"></span>
+      <div id="CompletedPopup">
+        <button id="popupCloseButton" onclick="closePopup()">x</button>
+        <p style="font-size: 1.5rem;" id="popupContent">Your goal is to answer the challenge question using the submit field. You will find the answer in 
+        the blacked out area after pressing start and using the key commands. Remember you can customize your experience using using the menus
+        on the left. </p>
+        </div>
+      </div>
+    </div>
       <div id="sidenav">
-        <div id="top">
-          <a href="index.html" style="display: inline; font-size: 0.75rem; vertical-align: middle;">←Home</a>
+        <div class="top">
+          <a href="index.html" style="font-size: 0.75rem; margin-top: 16px">←Home</a>
           <h2 style="text-align: center; vertical-align: middle;"><span style="color: #880D1E">Basic:</span> Challenge <span id="challengeNum">1</span></h2>
+          <button id="index_help_button" onclick="openPopup(1)" style="font-size: 2rem; padding: 0px;"><i class="fa fa-question-circle"></i></button>
         </div>
         <div id="instructions_section" class="container" style="text-align: center; margin-top: 20px;">
           <h3>Challenge!</h3>
           <form name="answer" onsubmit="return validateAnswer()" method="post">
             <label id="main_instruction" for="answerInput"></label><br>
             <input id="answerInput" type="text" name="answerInput" style="margin-top: 12px;">
-            <button name="data" type="button" onclick="checkAnswer()">Submit</button>
+            <button id="submit"  name="data" type="button" onclick="checkAnswer()">Submit</button>
           </form>
         </div>
         <div class="container">
           <form>
-            <h3>Visual Feedback</h3>
+            <div class="top">
+              <div></div>
+              <h3>Visual Feedback</h3>
+              <button id="visual_help_button" type="button" onclick="openPopup(2)" style="padding: 0px;"><i class="fa fa-question-circle"></i></button>
+            </div>
             <div style="text-align: center; padding-bottom: 20px;">
                <input type="radio" class="radio visualRadio" name="display" value="black" id="black" class="visualRadio" onclick="setShowRead('black')" checked/>
               <label for="y" class="visualRadio">No visual feedback</label><br>
               <input type="radio" class="radio visualRadio" name="display" value="some" id="some" onclick="setShowRead('showRead')" />
-              <label for="some" class="visualRadio">Show what is read</label><br>
+              <label for="some" class="visualRadio">Limited Visual Feedback</label><br>
               <input type="radio" class="radio visualRadio" name="display" value="white" id="white" onclick="setShowRead('showAll')" />
-              <label for="white" class="visualRadio">Remove Curtain</label>
+              <label for="white" class="visualRadio">Complete Visual Feedback</label>
           </div>
           </form>
         </div>
@@ -61,4 +76,5 @@
   </body>
   <script src="challengeData.js"></script>
   <script src="screen_reader.js"></script>
+  <script src="https://use.fontawesome.com/442041a9b9.js"></script>
 </html>
