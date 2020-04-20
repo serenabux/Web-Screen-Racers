@@ -355,6 +355,10 @@ function formData(challengeNumber){
 
 function getData(type){
 	const challenge = JSON.parse(window.localStorage.getItem('challenge'));
+	if(!(JSON.parse(window.localStorage.getItem('firstTime')))){
+		document.getElementById("outerPopUp").style.display = 'block';
+		window.localStorage.setItem('firstTime', JSON.stringify(1));
+	}
 	switch(type){
 		case "basicNav":
 			basicData(challenge);
@@ -448,9 +452,9 @@ function openPopup(content){
 	}
 	else if(content == 2){
 		document.getElementById("popupContent").innerHTML = `This section controls the amount of visual feedback you recieve while navigating the challenge content.<br>
-		<b>No visual feedback:</b> You will only recieve audio feedback <br>
+		<span style="margin-top: 24px"><b>No visual feedback:</b> You will only recieve audio feedback <br>
 		<b>Limited visual feedback:</b> You will be able to see the content that is being read.<br>
-		<b>Complete visula feedback:</b> Youwill be able to see all content and a border will appear around what is read.`;
+		<b>Complete visula feedback:</b> Youwill be able to see all content and a border will appear around what is read.</span>`;
 		return false;
 	}
 }

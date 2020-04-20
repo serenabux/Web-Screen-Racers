@@ -101,6 +101,10 @@ function getPastChallengeData(){
 				break;
 			}
 		}
+		var c = "";
+		switch(challengeSpecificInfo.displayKeyCommands){
+			case(0)
+		}
 		document.getElementById("best_time").innerHTML = challengeSpecificInfo.time;
 		document.getElementById("best_keystrokes").innerHTML = challengeSpecificInfo.keystrokes;
 		document.getElementById("best_keyboard_commands").innerHTML = challengeSpecificInfo.displayKeyCommands;
