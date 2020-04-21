@@ -20,6 +20,7 @@ var completeVisual = 0;
 
 function start() {
     started = true;
+    nextElement();
   }
 
 function deepFirstSearch(node,nodeList) {  
@@ -59,17 +60,18 @@ function callProperType(direction){
             if(elements[elementsIndex].children.length > 0){
                 if(direction == -1){
                     elementsIndex -= 1;
-                    callProperType()
+                    callProperType(-1)
                 }
-                elementsIndex += 1;
-                callProperType();
+                else{
+                    elementsIndex += 1;
+                    callProperType();
+                }
                 return;
             }
             else{
                 speak("Item: " + elements[elementsIndex].innerHTML);
             }
         }
-
         case "h1":{
             speak("heading level 1" + elements[elementsIndex].innerHTML);
             break;
@@ -96,9 +98,29 @@ function callProperType(direction){
         }
         case "ul":{
             var numChildren = elements[elementsIndex].children.length;
-            speak("list with " + numChildren + " items");
-            elementsIndex += 1;
-            callProperType();
+            if(direction == -1){
+                speak("exiting list with " + numChildren + " items");
+                elementsIndex -= 1;
+                callProperType(-1);
+            }
+            else{
+                speak("list with " + numChildren + " items");
+                elementsIndex += 1;
+                callProperType();
+            }
+            break;
+            
+        }
+        case "nav":{
+            if(direction == -1){
+                elementsIndex -= 1;
+                callProperType(-1);
+            }
+            else{
+                elementsIndex += 1;
+                callProperType();
+            }
+            break;
         }
         default:{
             speak(elements[elementsIndex.innerHTML])
@@ -357,6 +379,15 @@ var map = {}; // You could also use an array
 onkeydown = onkeyup = function(e){
     e = e || event; // to deal with IE
     map[e.keyCode] = e.type == 'keydown';
+    if(document.activeElement == document.getElementById("answerInput")){
+        //enter key
+        if(map['13']){
+            synth.cancel();
+            document.getElementById("submit").click();
+        }
+        return;
+    }
+    console.log(document.activeElement)
     if(started && e.type == 'keydown'){
         synth.cancel();
         keystrokes += 1;

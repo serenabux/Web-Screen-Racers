@@ -12,6 +12,10 @@ function getData(){
 	pageInfo.displayKeyCommands = JSON.parse(window.localStorage.getItem('displayKeyCommands'));
 	pageInfo.idealKeystrokes = JSON.parse(window.localStorage.getItem('idealKeystrokes'));
 	pageInfo.level = JSON.parse(window.localStorage.getItem('level'));
+
+	if(pageInfo.keystrokes == 0){
+		pageInfo.score = pageInfo.score - 1;
+	}
 }
 
 function calculateScore(){
@@ -68,7 +72,7 @@ function getPastChallengeData(){
 		if(challengeSpecificInfo.score < pageInfo.score){
 			challengeSpecificInfo.score = pageInfo.score;
 		}
-		if(challengeSpecificInfo.keystrokes > pageInfo.keystrokes){
+		if(challengeSpecificInfo.keystrokes > pageInfo.keystrokes && pageInfo.keystrokes > 0){
 			challengeSpecificInfo.keystrokes = pageInfo.keystrokes;
 		}
 		if(challengeSpecificInfo.displayKeyCommands > pageInfo.displayKeyCommands){
@@ -80,11 +84,14 @@ function getPastChallengeData(){
 		console.log(challengeSpecificInfo.time)
 		var t1 = challengeSpecificInfo.time.split(":");
 		var t2 = pageInfo.time.split(":");
+		var t = t1[0] + " minutes, " + t1[1] + " seconds";
 		if(parseInt(t1[0]) > parseInt(t2[0])){
 			challengeSpecificInfo.time = pageInfo.time;
+			var t = t2[0] + " minutes, " + t2[1] + " seconds";
 		}
 		else if(parseInt(t1[0]) == parseInt(t2[0]) && parseInt(t1[1]) > parseInt(t2[1])){
 			challengeSpecificInfo.time = pageInfo.time;
+			var t = t2[0] + " minutes, " + t2[1] + " seconds";
 		}
 		var display = "";
 		switch(challengeSpecificInfo.lowestDisplay){
@@ -101,13 +108,13 @@ function getPastChallengeData(){
 				break;
 			}
 		}
-		var c = "";
-		switch(challengeSpecificInfo.displayKeyCommands){
-			case(0)
+		var c = "Keyboard Commands Hidden";
+		if(challengeSpecificInfo.displayKeyCommands == 1){
+			c = "Display Keyboard Commands"
 		}
-		document.getElementById("best_time").innerHTML = challengeSpecificInfo.time;
+		document.getElementById("best_time").innerHTML = t;
 		document.getElementById("best_keystrokes").innerHTML = challengeSpecificInfo.keystrokes;
-		document.getElementById("best_keyboard_commands").innerHTML = challengeSpecificInfo.displayKeyCommands;
+		document.getElementById("best_keyboard_commands").innerHTML = c;
 		document.getElementById("best_visual").innerHTML = display;
 		var best_stars = "";
 		for(var i=0; i < challengeSpecificInfo.score; i++){
@@ -124,7 +131,7 @@ function getPastChallengeData(){
 
 function setStars(){
 	document.getElementById("complete_star").innerHTML = "&#9733";
-	if(pageInfo.keystrokes <= pageInfo.idealKeystrokes ){
+	if(pageInfo.keystrokes <= pageInfo.idealKeystrokes && pageInfo.keystrokes > 0){
 		document.getElementById("keystroke_star").innerHTML = "&#9733";
 	}
 	if(pageInfo.displayKeyCommands === 0){
@@ -194,10 +201,8 @@ function setUpPage(){
 	document.getElementById("keystrokes").innerHTML = pageInfo.keystrokes;
 	setVisualFeedback();
 	setKeyCommands();
-	const minutes = Math.floor(pageInfo.time / 60); 
-	const seconds = pageInfo.time - minutes * 60;
-	document.getElementById("time").innerHTML = pageInfo.time;
-	// document.getElementById("time").innerHTML = minutes + " minutes, " + seconds + " seconds";
+	var t = pageInfo.time.split(":"); 
+	document.getElementById("time").innerHTML = t[0] + " minutes, " + t[1] + " seconds";;
 	document.getElementById("level").innerHTML = "Level: " + pageInfo.level;
 	window.localStorage.setItem('level', JSON.stringify(pageInfo.level));
 }

@@ -25,11 +25,11 @@
         </div>
         <div id="instructions_section" class="container" style="text-align: center; margin-top: 20px;">
           <h3>Challenge!</h3>
-          <form name="answer" onsubmit="return validateAnswer()" method="post">
+          <!-- <form name="answer" onsubmit="checkAnswer(); return false"> -->
             <label id="main_instruction" for="answerInput"></label><br>
             <input id="answerInput" type="text" name="answerInput" style="margin-top: 12px;">
-            <button id="submit"  name="data" type="button" onclick="checkAnswer()">Submit</button>
-          </form>
+            <button id="submit"  name="data" type="submit" onclick="checkAnswer()">Submit</button>
+          <!-- </form> -->
         </div>
         <div class="container">
           <form>
@@ -66,7 +66,7 @@
           <h3 style="margin-bottom: 0px;">Keystrokes: <span id="keystorkes">0</span></h3>
         </div>
         <div class="button_section" style="margin-bottom: 36px; margin-top: 12px;">
-          <p style="font-size: 12px; margin-bottom: 12px;">Press start then press ↓ key to get to the challenge</p> 
+          <p style="font-size: 12px; margin-bottom: 12px;">Press start to begin the challenge</p> 
           <button id="start" onclick="start(), timer()">Start</button>
         </div>
       </div>

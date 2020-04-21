@@ -1,7 +1,8 @@
 var answer = '';
 var formAnswer = '';
 var idealKeystrokes = 10000000;
-var time = "00:00";
+var time = "0:0";
+var started = 0;
 
 
 
@@ -129,8 +130,8 @@ function basicData(challengeNumber){
 					<h2>Personal Life</h2>
 					<p id='personal'>Jen got married in 2003 to Micheal Tracy. They now have two sons, Griffen and Ethan.  Jen spends a lot of time hiking. 
 					She specifically enjoys hiking with her two sons and husband. She also volunteers with the Make a Wish Organinzation. `
-			question = "What organization does Jen volunteer for in her free time?"
-			answer = "Make a Wish";
+			question = "What year did Jen get married?"
+			answer = "2003";
 			idealKeystrokes = 10;
 			break;
 	}
@@ -380,11 +381,17 @@ function setChallenge(challengeNumber, challengeType){
 
 
 function timer() {
+	started = 1;
     time = new Date();
 }
 
 
 function checkAnswer(){
+	if(started == 0){
+		document.getElementById("outerPopUp").style.display = 'block';
+		document.getElementById("popupContent").innerHTML = `Remember to start the challenge and navigate through the challenge content before submitting! `;
+		return;
+	}
 	if(document.getElementById("answerInput").value == answer){
 		window.localStorage.setItem('answer', JSON.stringify(1));
 	}
@@ -399,6 +406,7 @@ function checkAnswer(){
 	window.localStorage.setItem('time', JSON.stringify(minutes + ':'+ sec))
 	window.localStorage.setItem('idealKeystrokes', JSON.stringify(idealKeystrokes));
 	window.location='complete.html';
+	return false;
 }
 
 function TrimSeconds(elapsed) {
@@ -451,7 +459,7 @@ function openPopup(content){
         on the left`;
 	}
 	else if(content == 2){
-		document.getElementById("popupContent").innerHTML = `This section controls the amount of visual feedback you recieve while navigating the challenge content.<br>
+		document.getElementById("popupContent").innerHTML = `This section controls the amount of visual feedback you recieve while navigating the challenge content.<br><br>
 		<span style="margin-top: 24px"><b>No visual feedback:</b> You will only recieve audio feedback <br>
 		<b>Limited visual feedback:</b> You will be able to see the content that is being read.<br>
 		<b>Complete visula feedback:</b> Youwill be able to see all content and a border will appear around what is read.</span>`;
@@ -464,9 +472,9 @@ function closePopup(){
 }
 
 window .onclick = function(event) {
-	console.log(event.target);
 	if(!event.target.matches("#CompletedPopup") && !event.target.matches("#index_help_button") && 
-	!event.target.matches(".fa-question-circle") && document.getElementById("outerPopUp").style.display == 'block'){
+	!event.target.matches(".fa-question-circle") && !event.target.matches("submit") && !document.activeElement == document.getElementById("answerInput")
+	 && document.getElementById("outerPopUp").style.display == 'block'){
 		document.getElementById("outerPopUp").style.display = 'none';
 	}
 }
