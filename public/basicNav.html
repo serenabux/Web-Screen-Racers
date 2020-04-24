@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Learn to use a Screen Reader</title>
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   </head>
   <body onload="getData('basicNav'); getElements();">
@@ -28,7 +28,7 @@
           <!-- <form name="answer" onsubmit="checkAnswer(); return false"> -->
             <label id="main_instruction" for="answerInput"></label><br>
             <input id="answerInput" type="text" name="answerInput" style="margin-top: 12px;">
-            <button id="submit"  name="data" type="submit" onclick="checkAnswer()">Submit</button>
+            <button id="submit"  name="data" type="submit" onclick="setCompletedData()">Submit</button>
           <!-- </form> -->
         </div>
         <div class="container">
@@ -74,7 +74,7 @@
       </div>
 
   </body>
-  <script src="challengeData.js"></script>
-  <script src="screen_reader.js"></script>
+  <script src="js/challengeData.js"></script>
+  <script src="js/screen_reader.js"></script>
   <script src="https://use.fontawesome.com/442041a9b9.js"></script>
 </html>
